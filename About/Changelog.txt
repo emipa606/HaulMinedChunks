@@ -1,4 +1,7 @@
 # Changelog for HaulMinedChunks
 
+1.3.1 - Should now only mark chunks mined by colonists
+
+
 1.3.0 - First publish
 
