@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <HMC.HomeArea>Only mark chunks in Home Area</HMC.HomeArea>
+  <HMC.HomeArea.Tooltip>Will automatically mark chunks in Home Area</HMC.HomeArea.Tooltip>
+  <HMC.CustomArea>Only mark chunks in area named {0}</HMC.CustomArea>
+  <HMC.CustomArea.Tooltip>Will automatically mark chunks in area with a custom name</HMC.CustomArea.Tooltip>
+  <HMC.AreaName>Custom area name: </HMC.AreaName>
+  <HMC.AllAreas>Chunks will be marked in all areas</HMC.AllAreas>
+  <HMC.DefinedAreas>Chunks will be marked in the areas selected below</HMC.DefinedAreas>
+  <HMC.ModVersion>Installed mod-version: {0}</HMC.ModVersion>
+</LanguageData>

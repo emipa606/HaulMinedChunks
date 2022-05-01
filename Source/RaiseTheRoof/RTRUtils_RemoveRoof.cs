@@ -1,20 +1,16 @@
 ﻿using HarmonyLib;
+using RaiseTheRoof;
 using RimWorld;
 using Verse;
 
 namespace HaulMinedChunks;
 
-[HarmonyPatch(typeof(Mineable), "TrySpawnYield")]
-internal class Mineable_TrySpawnYield
+[HarmonyPatch(typeof(RTRUtils), "RemoveRoof")]
+internal class RTRUtils_RemoveRoof
 {
-    private static void Postfix(Mineable __instance, Map map, Pawn pawn)
+    private static void Postfix(IntVec3 cell, Map map)
     {
-        if (pawn?.IsColonist == false)
-        {
-            return;
-        }
-
-        var possibleChunk = __instance.Position.GetFirstHaulable(map);
+        var possibleChunk = cell.GetFirstHaulable(map);
         if (possibleChunk == null ||
             possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.StoneChunks) == false)
         {
