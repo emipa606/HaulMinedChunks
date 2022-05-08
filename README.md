@@ -6,6 +6,9 @@
 Will mark stone-chunks to be hauled when they spawn from mining.
 I just got tired of random chunks laying about, slowing down my miners.
 Should work on any chunk, vanilla and modded.
+Safe to add/remove anytime
+
+- Added support for https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665]Raise The Roof
 
 ![Image](https://i.imgur.com/O0IIlYj.png)
 
