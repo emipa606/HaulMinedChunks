@@ -12,7 +12,7 @@ internal class RTRUtils_RemoveRoof
     {
         var possibleChunk = cell.GetFirstHaulable(map);
         if (possibleChunk == null ||
-            possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.StoneChunks) == false)
+            possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.Chunks) == false)
         {
             return;
         }

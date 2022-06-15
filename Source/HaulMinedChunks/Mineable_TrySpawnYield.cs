@@ -16,7 +16,7 @@ internal class Mineable_TrySpawnYield
 
         var possibleChunk = __instance.Position.GetFirstHaulable(map);
         if (possibleChunk == null ||
-            possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.StoneChunks) == false)
+            possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.Chunks) == false)
         {
             return;
         }

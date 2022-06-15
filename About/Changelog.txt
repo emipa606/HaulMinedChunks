@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.3.4 - Should now mark all chunks instead of just stone-chunks. Alpha biomes had metal chunks spawning from some mountain.
+
+
 1.3.3 - Support for drone-mining in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2037491557]Project RimFactory - Drones[/url]
 
 
