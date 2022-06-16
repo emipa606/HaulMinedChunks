@@ -1,4 +1,7 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using System.Linq;
+using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace HaulMinedChunks;
@@ -6,9 +9,12 @@ namespace HaulMinedChunks;
 [StaticConstructorOnStartup]
 public class HaulMinedChunks
 {
+    public static readonly List<ThingCategoryDef> ChunkCategoryDefs;
+
     static HaulMinedChunks()
     {
         new Harmony("Mlie.HaulMinedChunks").PatchAll();
+        ChunkCategoryDefs = ThingCategoryDefOf.Chunks.ThisAndChildCategoryDefs.ToList();
     }
 
     public static bool ShouldMarkChunk(IntVec3 position, Map map)

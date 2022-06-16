@@ -30,6 +30,10 @@ Safe to add/remove anytime
 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665]Raise The Roof[/url]
 - Added support for drone-mining in [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2037491557]Project RimFactory - Drones[/url]
 
+[h3]Deep drill[/h3]
+Chunks spawn on a random place around the miner there is no simple way of knowing if they spawned from the miner.
+You can however solve it pretty simple by adding a stockpile-zone around the drill that do not accept anything. Any chunk that spawns will then be in the "wrong" zone and will be hauled directly.
+
 [table]
 	[tr]
 		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]

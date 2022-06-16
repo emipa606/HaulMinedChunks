@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -16,7 +17,7 @@ internal class Mineable_TrySpawnYield
 
         var possibleChunk = __instance.Position.GetFirstHaulable(map);
         if (possibleChunk == null ||
-            possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.Chunks) == false)
+            possibleChunk.def.thingCategories?.Cross(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
         {
             return;
         }

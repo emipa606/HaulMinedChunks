@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Linq;
+using HarmonyLib;
 using RaiseTheRoof;
 using RimWorld;
 using Verse;
@@ -12,7 +13,7 @@ internal class RTRUtils_RemoveRoof
     {
         var possibleChunk = cell.GetFirstHaulable(map);
         if (possibleChunk == null ||
-            possibleChunk.def.thingCategories?.Contains(ThingCategoryDefOf.Chunks) == false)
+            possibleChunk.def.thingCategories?.Cross(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
         {
             return;
         }
