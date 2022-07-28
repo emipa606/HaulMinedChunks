@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.3.6 - All pawns of the colony should now trigger the haul-marking instead of only colonists. Should now work with all droid-mods etc.
+
+
 1.3.5 - Fixed chunk-category inheritance
 
 
