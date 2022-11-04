@@ -1,5 +1,9 @@
 # Changelog for HaulMinedChunks
 
+1.4.1 - Mod updated for 1.4 and passed autotests.
+Used DeepL to update translations for ChineseSimplified, French, German, Russian
+
+
 1.3.6 - All pawns of the colony should now trigger the haul-marking instead of only colonists. Should now work with all droid-mods etc.
 
 

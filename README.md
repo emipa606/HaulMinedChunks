@@ -9,7 +9,7 @@ Should work on any chunk, vanilla and modded.
 Safe to add/remove anytime
 
 - Added support for https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665]Raise The Roof
-- Added support for drone-mining in https://steamcommunity.com/sharedfiles/filedetails/?id=2037491557]Project RimFactory - Drones
+- Added support for drone-mining in most droid-mods.
 
 ### Deep drill
 

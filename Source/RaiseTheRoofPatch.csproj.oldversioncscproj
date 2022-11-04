@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputPath>..\..\Compatibility\RaiseTheRoof\1.4\Assemblies</OutputPath>
+    <OutputPath>..\..\1.4\Assemblies</OutputPath>
     <TargetFramework>net48</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
@@ -18,15 +18,5 @@
       <Version>*</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <ProjectReference Include="..\HaulMinedChunks\HaulMinedChunks.csproj" >
-	    <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
-	    <CopyLocal>False</CopyLocal>
-	    <Private>false</Private>
-    </ProjectReference>
-	  <Reference Include="RaiseTheRoof">
-		  <HintPath>..\..\..\..\..\..\workshop\content\294100\1776143665\v1.4\Assemblies\RaiseTheRoof.dll</HintPath>
-		  <CopyLocal>False</CopyLocal>
-		  <Private>false</Private>
-	  </Reference>
   </ItemGroup>
 </Project>
