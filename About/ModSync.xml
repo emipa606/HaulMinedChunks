@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>4b57addb-6278-47eb-bb08-140c84edc400</ID>
   <ModName>Haul Mined Chunks</ModName>
-  <Version>1.4.1</Version>
+  <Version>1.5.0</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>

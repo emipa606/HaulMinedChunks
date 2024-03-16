@@ -27,7 +27,7 @@ internal class HaulMinedChunksMod : Mod
     {
         instance = this;
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(ModLister.GetActiveModWithIdentifier("Mlie.HaulMinedChunks"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     /// <summary>
