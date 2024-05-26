@@ -10,7 +10,7 @@ internal class Mineable_TrySpawnYield
 {
     private static void Postfix(Mineable __instance, Map map, Pawn pawn)
     {
-        if (pawn?.Faction != Faction.OfPlayerSilentFail)
+        if (pawn == null || !pawn.IsColonist && !pawn.IsColonyMech && !pawn.IsPrisoner)
         {
             return;
         }
