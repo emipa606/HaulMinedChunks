@@ -31,6 +31,7 @@ Safe to add/remove anytime
 
 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665]Raise The Roof[/url]
 - Added support for drone-mining in most droid-mods.
+- Added support for chunks dug up by Vanilla Framework Expanded-based modded creatures (Stonedigger Dryads, etc).
 
 [h3]Deep drill[/h3]
 Chunks spawn on a random place around the miner there is no simple way of knowing if they spawned from the miner.

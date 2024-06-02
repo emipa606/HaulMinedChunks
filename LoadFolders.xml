@@ -22,5 +22,6 @@
     <li>/</li>
     <li>1.5</li>
     <li IfModActive="machine.rtr">Compatibility/RaiseTheRoof/1.5</li>
+    <li IfModActive="oskarpotocki.vanillafactionsexpanded.core">Compatibility/VanillaExpandedFramework/1.5</li>
   </v1.5>
 </loadFolders>
