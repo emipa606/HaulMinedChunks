@@ -1,19 +1,18 @@
-﻿using AnimalBehaviours;
-using HarmonyLib;
-using RimWorld;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using AnimalBehaviours;
+using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace HaulMinedChunks;
 
 [HarmonyPatch]
-public static class CompDigPeriodically_Patches
+public static class CompDigPeriodically_CompTick
 {
     [HarmonyPatch(typeof(CompDigPeriodically), nameof(CompDigPeriodically.CompTick))]
-    [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> CompDigPeriodically_CompTick_Transpiler(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         return new CodeMatcher(instructions)
             .MatchStartForward(
@@ -21,14 +20,13 @@ public static class CompDigPeriodically_Patches
                 new CodeMatch(OpCodes.Ldloc_S), // Ld `digIfRocksOrBricks`
                 new CodeMatch(OpCodes.Stfld, AccessTools.Field(typeof(Thing), nameof(Thing.stackCount))))
             .DuplicateInstructionAndAdvance() // Duplicate the Ld `thing`
-            .Insert(CodeInstruction.Call(typeof(CompDigPeriodically_Patches), nameof(MarkToHaulIfHaulable)))
+            .Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTick), nameof(MarkToHaulIfHaulable)))
             .InstructionEnumeration();
     }
 
     public static void MarkToHaulIfHaulable(Thing thing)
     {
-        if (thing == null
-            || thing.Map == null
+        if (thing?.Map == null
             || thing.def.thingCategories?.Cross(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
         {
             return;

@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using HarmonyLib;
 using Verse;
 
 namespace HaulMinedChunks;
@@ -8,7 +9,7 @@ public class VanillaExpandedFrameworkPatch
 {
     static VanillaExpandedFrameworkPatch()
     {
-        new Harmony("Mlie.HaulMinedChunks.VanillaExpandedFrameworkPatch").PatchAll();
+        new Harmony("Mlie.HaulMinedChunks.VanillaExpandedFrameworkPatch").PatchAll(Assembly.GetExecutingAssembly());
         Log.Message("[HaulMinedChunks]: Adding compatibility with Vanilla Expanded Framework");
     }
 }
