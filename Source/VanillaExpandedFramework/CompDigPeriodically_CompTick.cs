@@ -27,7 +27,7 @@ public static class CompDigPeriodically_CompTick
     public static void MarkToHaulIfHaulable(Thing thing)
     {
         if (thing?.Map == null
-            || thing.def.thingCategories?.Cross(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
+            || thing.def.thingCategories?.Intersect(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
         {
             return;
         }
