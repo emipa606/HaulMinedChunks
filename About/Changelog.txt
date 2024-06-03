@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.3 - Added support for chunks spawned by the Deep Drill, via delmain
+
+
 1.5.2 - Added support for chunks dug up by Vanilla Framework Expanded-based modded creatures (Stonedigger Dryads, etc) via delmain
 
 

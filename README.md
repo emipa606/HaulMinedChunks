@@ -9,11 +9,8 @@ Safe to add/remove anytime
 
 - Added support for [https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665](Raise The Roof)
 - Added support for drone-mining in most droid-mods.
-
-### Deep drill
-
-Chunks spawn on a random place around the miner there is no simple way of knowing if they spawned from the miner.
-You can however solve it pretty simple by adding a stockpile-zone around the drill that do not accept anything. Any chunk that spawns will then be in the "wrong" zone and will be hauled directly.
+- Added support for chunks dug up by Vanilla Framework Expanded-based modded creatures, via delmain
+- Added support for chunks spawned by the Deep Drill, via delmain
 
 ![Image](https://i.imgur.com/Ds0rBAD.png)
 Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my [https://store.steampowered.com/wishlist/id/Mlie](Wishlist) or buy me a cup of tea.
