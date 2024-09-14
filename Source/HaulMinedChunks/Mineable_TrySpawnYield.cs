@@ -10,7 +10,19 @@ internal class Mineable_TrySpawnYield
 {
     private static void Postfix(Mineable __instance, Map map, Pawn pawn)
     {
-        if (pawn == null || !pawn.IsColonist && !pawn.IsColonyMech && !pawn.IsPrisoner)
+        if (pawn == null)
+        {
+            return;
+        }
+
+        if (HaulMinedChunks.Insects2Loaded && pawn.RaceProps.Insect)
+        {
+            if (!pawn.health.hediffSet.hediffs.Any(hediff => hediff.GetType().Name == "Hediff_InsectWorker"))
+            {
+                return;
+            }
+        }
+        else if (!pawn.IsColonist && !pawn.IsColonyMech && !pawn.IsPrisoner)
         {
             return;
         }

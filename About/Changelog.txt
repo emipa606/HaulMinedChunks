@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.4 - Addeds support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3309003431]Vanilla Factions Expanded - Insectoids 2[/url]
+
+
 1.5.3 - Added support for chunks spawned by the Deep Drill, via delmain
 
 

@@ -10,9 +10,11 @@ namespace HaulMinedChunks;
 public class HaulMinedChunks
 {
     public static readonly List<ThingCategoryDef> ChunkCategoryDefs;
+    public static bool Insects2Loaded;
 
     static HaulMinedChunks()
     {
+        Insects2Loaded = ModsConfig.IsActive("OskarPotocki.VFE.Insectoid2");
         new Harmony("Mlie.HaulMinedChunks").PatchAll();
         ChunkCategoryDefs = ThingCategoryDefOf.Chunks.ThisAndChildCategoryDefs.ToList();
     }
