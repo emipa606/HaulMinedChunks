@@ -8,10 +8,9 @@ using Verse;
 
 namespace HaulMinedChunks;
 
-[HarmonyPatch]
+[HarmonyPatch(typeof(CompDigPeriodically), nameof(CompDigPeriodically.CompTick))]
 public static class CompDigPeriodically_CompTick
 {
-    [HarmonyPatch(typeof(CompDigPeriodically), nameof(CompDigPeriodically.CompTick))]
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         return new CodeMatcher(instructions)

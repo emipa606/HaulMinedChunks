@@ -8,6 +8,7 @@ Should work on any chunk, vanilla and modded.
 Safe to add/remove anytime
 
 - Added support for [Raise The Roof](https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665)
+- Addeds support for [Vanilla Factions Expanded - Insectoids 2](https://steamcommunity.com/sharedfiles/filedetails/?id=3309003431)
 - Added support for drone-mining in most droid-mods.
 - Added support for chunks dug up by Vanilla Framework Expanded-based modded creatures, via delmain
 - Added support for chunks spawned by the Deep Drill, via delmain
@@ -30,6 +31,6 @@ Since modding is just a hobby for me I expect no donations to keep modding. If y
 -  If you have the solution for a problem, please post it to the GitHub repository.
 -  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
+ 
 
-
-[![Image](https://img.shields.io/github/v/release/emipa606/HaulMinedChunks?label=latest%20version&style=plastic&labelColor=0070cd&color=white)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2799728059)
+[![Image](https://img.shields.io/github/v/release/emipa606/HaulMinedChunks?label=latest%20version&style=plastic&labelColor=0070cd&color=white)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2799728059) | tags: hauling,  stone chunks

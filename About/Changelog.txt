@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.5 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3141472661]Ancient mining industry[/url]
+
+
 1.5.4 - Addeds support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3309003431]Vanilla Factions Expanded - Insectoids 2[/url]
 
 

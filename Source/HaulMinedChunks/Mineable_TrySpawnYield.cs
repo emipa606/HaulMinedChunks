@@ -8,7 +8,7 @@ namespace HaulMinedChunks;
 [HarmonyPatch(typeof(Mineable), "TrySpawnYield", typeof(Map), typeof(bool), typeof(Pawn))]
 internal class Mineable_TrySpawnYield
 {
-    private static void Postfix(Mineable __instance, Map map, Pawn pawn)
+    public static void Postfix(Mineable __instance, Map map, Pawn pawn)
     {
         if (pawn == null)
         {

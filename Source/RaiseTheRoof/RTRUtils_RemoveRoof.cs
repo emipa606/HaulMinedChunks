@@ -6,10 +6,10 @@ using Verse;
 
 namespace HaulMinedChunks;
 
-[HarmonyPatch(typeof(RTRUtils), "RemoveRoof")]
+[HarmonyPatch(typeof(RTRUtils), nameof(RTRUtils.RemoveRoof))]
 internal class RTRUtils_RemoveRoof
 {
-    private static void Postfix(IntVec3 cell, Map map)
+    public static void Postfix(IntVec3 cell, Map map)
     {
         var possibleChunk = cell.GetFirstHaulable(map);
         if (possibleChunk == null ||
