@@ -24,7 +24,16 @@ internal class Mineable_TrySpawnYield
         }
         else if (!pawn.IsColonist && !pawn.IsColonyMech && !pawn.IsPrisoner)
         {
-            return;
+            if (!HaulMinedChunks.ArtificialBeingsFrameworkLoaded)
+            {
+                return;
+            }
+
+            if (pawn.Faction != Faction.OfPlayerSilentFail ||
+                !(bool)HaulMinedChunks.IsArtificialMethodInfo.Invoke(null, [pawn]))
+            {
+                return;
+            }
         }
 
         var possibleChunk = __instance.Position.GetFirstHaulable(map);

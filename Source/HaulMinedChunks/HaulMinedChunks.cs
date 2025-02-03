@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -10,11 +11,19 @@ namespace HaulMinedChunks;
 public class HaulMinedChunks
 {
     public static readonly List<ThingCategoryDef> ChunkCategoryDefs;
-    public static bool Insects2Loaded;
+    public static readonly bool Insects2Loaded;
+    public static readonly bool ArtificialBeingsFrameworkLoaded;
+    public static readonly MethodInfo IsArtificialMethodInfo;
 
     static HaulMinedChunks()
     {
         Insects2Loaded = ModsConfig.IsActive("OskarPotocki.VFE.Insectoid2");
+        ArtificialBeingsFrameworkLoaded = ModsConfig.IsActive("Killathon.ArtificialBeings");
+        if (ArtificialBeingsFrameworkLoaded)
+        {
+            IsArtificialMethodInfo = AccessTools.Method("ArtificialBeings.ABF_Utils:IsArtificial");
+        }
+
         new Harmony("Mlie.HaulMinedChunks").PatchAll();
         ChunkCategoryDefs = ThingCategoryDefOf.Chunks.ThisAndChildCategoryDefs.ToList();
     }
