@@ -24,5 +24,6 @@
     <li IfModActive="machine.rtr">Compatibility/RaiseTheRoof/1.5</li>
     <li IfModActive="oskarpotocki.vanillafactionsexpanded.core">Compatibility/VanillaExpandedFramework/1.5</li>
     <li IfModActive="XMB.AncientMiningIndustry.MO">Compatibility/AncientMiningIndustry/1.5</li>
+    <li IfModActive="spdskatr.projectrimfactory">Compatibility/ProjectRimFactoryRevived/1.5</li>
   </v1.5>
 </loadFolders>

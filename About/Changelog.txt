@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.7 - Added compatibility with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2033979700]Project RimFactory Revived[/url]
+
+
 1.5.6 - Added support for [url=https://steamcommunity.com/workshop/filedetails/?id=3284097810]ABF: Artificial Beings Framework[/url]
 
 

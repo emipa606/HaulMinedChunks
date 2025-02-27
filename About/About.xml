@@ -31,6 +31,8 @@ Safe to add/remove anytime
 
 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1776143665]Raise The Roof[/url]
 - Addeds support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3309003431]Vanilla Factions Expanded - Insectoids 2[/url]
+- Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3288482799]ABF: Artificial Beings Framework[/url]
+- Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3141472661]Ancient mining industry[/url]
 - Added support for drone-mining in most droid-mods.
 - Added support for chunks dug up by Vanilla Framework Expanded-based modded creatures, via delmain
 - Added support for chunks spawned by the Deep Drill, via delmain
@@ -63,5 +65,5 @@ Since modding is just a hobby for me I expect no donations to keep modding. If y
 [/list] 
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2799728059][img]https://img.shields.io/github/v/release/emipa606/HaulMinedChunks?label=latest%20version&amp;style=plastic&amp;labelColor=0070cd&amp;color=white[/img][/url] | tags: hauling,  stone chunks</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.5.6</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.5.7</modVersion>
 </ModMetaData>
