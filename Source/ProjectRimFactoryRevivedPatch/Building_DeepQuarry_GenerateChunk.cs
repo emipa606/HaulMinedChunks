@@ -8,11 +8,11 @@ public static class Building_DeepQuarry_GenerateChunk
 {
     public static void Prefix()
     {
-        ProjectRimFactoryRevivedPatch.SpawningChunk = true;
+        Mineable_TrySpawnYield.Spawning = true;
     }
 
     public static void Postfix()
     {
-        ProjectRimFactoryRevivedPatch.SpawningChunk = false;
+        Mineable_TrySpawnYield.Spawning = false;
     }
 }

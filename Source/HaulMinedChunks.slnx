@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="AncientMiningIndustryPatch/AncientMiningIndustryPatch.csproj" />
+  <Project Path="HaulMinedChunks/HaulMinedChunks.csproj" />
+  <Project Path="ProjectRimFactoryRevivedPatch/ProjectRimFactoryRevivedPatch.csproj" />
+  <Project Path="RaiseTheRoof/RaiseTheRoofPatch.csproj" />
+  <Project Path="VanillaExpandedFramework/VanillaExpandedFrameworkPatch.csproj" />
+</Solution>

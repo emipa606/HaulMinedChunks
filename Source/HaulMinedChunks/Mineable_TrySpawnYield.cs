@@ -1,14 +1,15 @@
-﻿using System.Linq;
-using HarmonyLib;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
 
 namespace HaulMinedChunks;
 
 [HarmonyPatch(typeof(Mineable), "TrySpawnYield", typeof(Map), typeof(bool), typeof(Pawn))]
-internal class Mineable_TrySpawnYield
+public class Mineable_TrySpawnYield
 {
-    public static void Postfix(Mineable __instance, Map map, Pawn pawn)
+    public static bool Spawning;
+
+    public static void Prefix(Pawn pawn)
     {
         if (pawn == null)
         {
@@ -36,16 +37,11 @@ internal class Mineable_TrySpawnYield
             }
         }
 
-        var possibleChunk = __instance.Position.GetFirstHaulable(map);
-        if (possibleChunk == null ||
-            possibleChunk.def.thingCategories?.Intersect(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
-        {
-            return;
-        }
+        Spawning = true;
+    }
 
-        if (HaulMinedChunks.ShouldMarkChunk(possibleChunk.Position, map))
-        {
-            map.designationManager.AddDesignation(new Designation(possibleChunk, DesignationDefOf.Haul));
-        }
+    public static void Postfix()
+    {
+        Spawning = false;
     }
 }

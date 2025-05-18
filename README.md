@@ -11,6 +11,7 @@ Safe to add/remove anytime
 - Addeds support for [Vanilla Factions Expanded - Insectoids 2](https://steamcommunity.com/sharedfiles/filedetails/?id=3309003431)
 - Added support for [ABF: Artificial Beings Framework](https://steamcommunity.com/sharedfiles/filedetails/?id=3288482799)
 - Added support for [Ancient mining industry](https://steamcommunity.com/sharedfiles/filedetails/?id=3141472661)
+- Added support for [Project RimFactory Revived](https://steamcommunity.com/sharedfiles/filedetails/?id=2033979700)
 - Added support for drone-mining in most droid-mods.
 - Added support for chunks dug up by Vanilla Framework Expanded-based modded creatures, via delmain
 - Added support for chunks spawned by the Deep Drill, via delmain

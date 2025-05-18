@@ -37,10 +37,7 @@ internal class HaulMinedChunksMod : Mod
     {
         get
         {
-            if (settings == null)
-            {
-                settings = GetSettings<HaulMinedChunksSettings>();
-            }
+            settings ??= GetSettings<HaulMinedChunksSettings>();
 
             return settings;
         }
@@ -68,13 +65,13 @@ internal class HaulMinedChunksMod : Mod
         if (!Settings.LimitToCustomArea && !Settings.LimitToHomeArea)
         {
             listing_Standard.Label("HMC.AllAreas".Translate());
-            listing_Standard.GapLine();
         }
         else
         {
             listing_Standard.Label("HMC.DefinedAreas".Translate());
-            listing_Standard.GapLine();
         }
+
+        listing_Standard.GapLine();
 
         listing_Standard.CheckboxLabeled("HMC.HomeArea".Translate(), ref Settings.LimitToHomeArea,
             "HMC.HomeArea.Tooltip".Translate());

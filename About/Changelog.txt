@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.8 - Support for increased yield. Simplified some code
+
+
 1.5.7 - Added compatibility with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2033979700]Project RimFactory Revived[/url]
 
 

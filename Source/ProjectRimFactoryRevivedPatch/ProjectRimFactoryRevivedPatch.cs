@@ -7,8 +7,6 @@ namespace HaulMinedChunks;
 [StaticConstructorOnStartup]
 public static class ProjectRimFactoryRevivedPatch
 {
-    public static bool SpawningChunk;
-
     static ProjectRimFactoryRevivedPatch()
     {
         new Harmony("Mlie.HaulMinedChunks.ProjectRimFactoryRevivedPatch").PatchAll(Assembly.GetExecutingAssembly());
