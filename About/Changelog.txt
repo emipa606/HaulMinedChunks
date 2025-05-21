@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.9 - Added a minor failsafe for chunk spawning
+
+
 1.5.8 - Support for increased yield. Simplified some code
 
 
