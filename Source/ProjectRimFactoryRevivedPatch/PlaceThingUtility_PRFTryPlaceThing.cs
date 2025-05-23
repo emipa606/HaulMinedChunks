@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using HarmonyLib;
+﻿using HarmonyLib;
 using ProjectRimFactory;
-using RimWorld;
 using Verse;
 
 namespace HaulMinedChunks;
@@ -11,15 +9,11 @@ public static class PlaceThingUtility_PRFTryPlaceThing
 {
     public static void Postfix(Thing t)
     {
-        if (t?.Map == null
-            || t.def.thingCategories?.Intersect(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
+        if (!Mineable_TrySpawnYield.Spawning)
         {
             return;
         }
 
-        if (HaulMinedChunks.ShouldMarkChunk(t.Position, t.Map))
-        {
-            t.Map.designationManager.AddDesignation(new Designation(t, DesignationDefOf.Haul));
-        }
+        HaulMinedChunks.MarkIfNeeded(t);
     }
 }

@@ -28,25 +28,40 @@ public class HaulMinedChunks
         ChunkCategoryDefs = ThingCategoryDefOf.Chunks.ThisAndChildCategoryDefs.ToList();
     }
 
-    public static bool ShouldMarkChunk(IntVec3 position, Map map)
+    public static void MarkIfNeeded(Thing thing)
     {
-        if (!HaulMinedChunksMod.instance.Settings.LimitToCustomArea &&
-            !HaulMinedChunksMod.instance.Settings.LimitToHomeArea)
+        var map = thing.MapHeld;
+        var position = thing.PositionHeld;
+
+        if (map == null || position == IntVec3.Invalid)
         {
-            return true;
+            return;
         }
 
-        if (HaulMinedChunksMod.instance.Settings.LimitToHomeArea && map.areaManager.Home[position])
+        if (thing.def.thingCategories?.Intersect(ChunkCategoryDefs).Any() == false)
         {
-            return true;
+            return;
         }
 
-        if (!HaulMinedChunksMod.instance.Settings.LimitToCustomArea)
+        if (HaulMinedChunksMod.instance.Settings.LimitToHomeArea && !map.areaManager.Home[position])
         {
-            return false;
+            return;
         }
 
-        var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.instance.Settings.CustomAreaName);
-        return customArea != null && customArea[position];
+        if (HaulMinedChunksMod.instance.Settings.LimitToCustomArea)
+        {
+            var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.instance.Settings.CustomAreaName);
+            if (customArea == null || !customArea[position])
+            {
+                return;
+            }
+        }
+
+        if (map.designationManager.HasMapDesignationOn(thing))
+        {
+            return;
+        }
+
+        map.designationManager.AddDesignation(new Designation(thing, DesignationDefOf.Haul));
     }
 }

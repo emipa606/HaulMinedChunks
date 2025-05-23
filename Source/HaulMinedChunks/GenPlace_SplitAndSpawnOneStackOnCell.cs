@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using HarmonyLib;
-using RimWorld;
+﻿using HarmonyLib;
 using Verse;
 
 namespace HaulMinedChunks;
@@ -20,16 +18,6 @@ public static class GenPlace_SplitAndSpawnOneStackOnCell
             return;
         }
 
-        if (resultingThing?.Map == null
-            || resultingThing.def.thingCategories?.Intersect(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
-        {
-            return;
-        }
-
-        if (HaulMinedChunks.ShouldMarkChunk(resultingThing.Position, resultingThing.Map))
-        {
-            resultingThing.Map.designationManager.AddDesignation(new Designation(resultingThing,
-                DesignationDefOf.Haul));
-        }
+        HaulMinedChunks.MarkIfNeeded(resultingThing);
     }
 }

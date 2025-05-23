@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.5.10 - Should no longer be possible to get multiple haul assignments on the same item
+
+
 1.5.9 - Added a minor failsafe for chunk spawning
 
 

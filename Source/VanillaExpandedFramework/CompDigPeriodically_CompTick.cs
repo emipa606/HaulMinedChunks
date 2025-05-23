@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
 using AnimalBehaviours;
 using HarmonyLib;
-using RimWorld;
 using Verse;
 
 namespace HaulMinedChunks;
@@ -25,15 +23,6 @@ public static class CompDigPeriodically_CompTick
 
     public static void MarkToHaulIfHaulable(Thing thing)
     {
-        if (thing?.Map == null
-            || thing.def.thingCategories?.Intersect(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
-        {
-            return;
-        }
-
-        if (HaulMinedChunks.ShouldMarkChunk(thing.Position, thing.Map))
-        {
-            thing.Map.designationManager.AddDesignation(new Designation(thing, DesignationDefOf.Haul));
-        }
+        HaulMinedChunks.MarkIfNeeded(thing);
     }
 }

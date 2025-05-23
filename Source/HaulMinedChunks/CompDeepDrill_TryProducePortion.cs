@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
@@ -40,16 +39,11 @@ internal class CompDeepDrill_TryProducePortion
 
     public static void TryMarkToHaul(Thing thing, bool created)
     {
-        if (!created
-            || thing?.Map == null
-            || thing.def.thingCategories?.Intersect(HaulMinedChunks.ChunkCategoryDefs).Any() == false)
+        if (!created)
         {
             return;
         }
 
-        if (HaulMinedChunks.ShouldMarkChunk(thing.Position, thing.Map))
-        {
-            thing.Map.designationManager.AddDesignation(new Designation(thing, DesignationDefOf.Haul));
-        }
+        HaulMinedChunks.MarkIfNeeded(thing);
     }
 }
