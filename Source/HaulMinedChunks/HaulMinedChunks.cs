@@ -38,7 +38,17 @@ public class HaulMinedChunks
             return;
         }
 
+        if (map.designationManager.HasMapDesignationAt(position))
+        {
+            return;
+        }
+
         if (thing.def.thingCategories?.Intersect(ChunkCategoryDefs).Any() == false)
+        {
+            return;
+        }
+
+        if (thing.def.filth != null)
         {
             return;
         }
@@ -55,11 +65,6 @@ public class HaulMinedChunks
             {
                 return;
             }
-        }
-
-        if (map.designationManager.HasMapDesignationOn(thing))
-        {
-            return;
         }
 
         map.designationManager.AddDesignation(new Designation(thing, DesignationDefOf.Haul));
