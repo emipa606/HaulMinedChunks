@@ -2,12 +2,18 @@
   "Continued": false,
   "CanAdd": "0",
   "CanRemove": "0",
-  "PreviewVersion": "1.5",
+  "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "FundingSet": true,
-  "LastXmlCleaning": "2025-06-09T22:02:47.5838262+02:00",
+  "LastXmlCleaning": "2025-07-16T22:04:01.3805703+02:00",
   "SearchTags": [
     "hauling",
     " stone chunks"
-  ]
+  ],
+  "Patches": false,
+  "Defs": false,
+  "Assemblies": true,
+  "LinesOfCode": 26285,
+  "LinesOfXML": 0,
+  "CodeBaseSize": 70
 }

@@ -10,7 +10,7 @@ namespace HaulMinedChunks;
 [StaticConstructorOnStartup]
 public class HaulMinedChunks
 {
-    public static readonly List<ThingCategoryDef> ChunkCategoryDefs;
+    private static readonly List<ThingCategoryDef> ChunkCategoryDefs;
     public static readonly bool Insects2Loaded;
     public static readonly bool ArtificialBeingsFrameworkLoaded;
     public static readonly MethodInfo IsArtificialMethodInfo;
@@ -53,14 +53,14 @@ public class HaulMinedChunks
             return;
         }
 
-        if (HaulMinedChunksMod.instance.Settings.LimitToHomeArea && !map.areaManager.Home[position])
+        if (HaulMinedChunksMod.Instance.Settings.LimitToHomeArea && !map.areaManager.Home[position])
         {
             return;
         }
 
-        if (HaulMinedChunksMod.instance.Settings.LimitToCustomArea)
+        if (HaulMinedChunksMod.Instance.Settings.LimitToCustomArea)
         {
-            var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.instance.Settings.CustomAreaName);
+            var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.Instance.Settings.CustomAreaName);
             if (customArea == null || !customArea[position])
             {
                 return;

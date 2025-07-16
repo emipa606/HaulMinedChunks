@@ -10,7 +10,7 @@ internal class HaulMinedChunksMod : Mod
     /// <summary>
     ///     The instance of the settings to be read by the mod
     /// </summary>
-    public static HaulMinedChunksMod instance;
+    public static HaulMinedChunksMod Instance;
 
     private static string currentVersion;
 
@@ -25,7 +25,7 @@ internal class HaulMinedChunksMod : Mod
     /// <param name="content"></param>
     public HaulMinedChunksMod(ModContentPack content) : base(content)
     {
-        instance = this;
+        Instance = this;
         currentVersion =
             VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
@@ -60,40 +60,40 @@ internal class HaulMinedChunksMod : Mod
     /// <param name="rect"></param>
     public override void DoSettingsWindowContents(Rect rect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(rect);
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(rect);
         if (!Settings.LimitToCustomArea && !Settings.LimitToHomeArea)
         {
-            listing_Standard.Label("HMC.AllAreas".Translate());
+            listingStandard.Label("HMC.AllAreas".Translate());
         }
         else
         {
-            listing_Standard.Label("HMC.DefinedAreas".Translate());
+            listingStandard.Label("HMC.DefinedAreas".Translate());
         }
 
-        listing_Standard.GapLine();
+        listingStandard.GapLine();
 
-        listing_Standard.CheckboxLabeled("HMC.HomeArea".Translate(), ref Settings.LimitToHomeArea,
+        listingStandard.CheckboxLabeled("HMC.HomeArea".Translate(), ref Settings.LimitToHomeArea,
             "HMC.HomeArea.Tooltip".Translate());
-        listing_Standard.CheckboxLabeled("HMC.CustomArea".Translate(Settings.CustomAreaName),
+        listingStandard.CheckboxLabeled("HMC.CustomArea".Translate(Settings.CustomAreaName),
             ref Settings.LimitToCustomArea,
             "HMC.CustomArea.Tooltip".Translate());
         if (Settings.LimitToCustomArea)
         {
             Settings.CustomAreaName =
-                listing_Standard.TextEntryLabeled("HMC.AreaName".Translate(), Settings.CustomAreaName);
+                listingStandard.TextEntryLabeled("HMC.AreaName".Translate(), Settings.CustomAreaName);
         }
 
 
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("HMC.ModVersion".Translate(currentVersion));
+            listingStandard.Label("HMC.ModVersion".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
         Settings.Write();
     }
 }

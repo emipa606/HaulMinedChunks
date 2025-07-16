@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.6.0 - Updated to 1.6
+
+
 1.5.11 - Should no longer mark scattered stones filth
 
 

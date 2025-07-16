@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Reflection.Emit;
-using AnimalBehaviours;
 using HarmonyLib;
+using VEF.AnimalBehaviours;
 using Verse;
 
 namespace HaulMinedChunks;
 
-[HarmonyPatch(typeof(CompDigPeriodically), nameof(CompDigPeriodically.CompTick))]
-public static class CompDigPeriodically_CompTick
+[HarmonyPatch(typeof(CompDigPeriodically), nameof(CompDigPeriodically.CompTickInterval))]
+public static class CompDigPeriodically_CompTickInterval
 {
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
@@ -17,7 +17,7 @@ public static class CompDigPeriodically_CompTick
                 new CodeMatch(OpCodes.Ldloc_S), // Ld `digIfRocksOrBricks`
                 new CodeMatch(OpCodes.Stfld, AccessTools.Field(typeof(Thing), nameof(Thing.stackCount))))
             .DuplicateInstructionAndAdvance() // Duplicate the Ld `thing`
-            .Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTick), nameof(MarkToHaulIfHaulable)))
+            .Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval), nameof(MarkToHaulIfHaulable)))
             .InstructionEnumeration();
     }
 

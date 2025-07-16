@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputPath>..\..\Compatibility\RaiseTheRoof\1.4\Assemblies</OutputPath>
-    <TargetFramework>net48</TargetFramework>
+    <OutputPath>..\..\Compatibility\RaiseTheRoof\1.5\Assemblies</OutputPath>
+    <TargetFramework>net481</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.4.2</FileVersion>
+    <FileVersion>1.5.11</FileVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
@@ -22,6 +23,7 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
       <CopyLocal>False</CopyLocal>
       <Private>false</Private>
+      <ExcludeAssets>all</ExcludeAssets>
     </ProjectReference>
     <Reference Include="RaiseTheRoof">
       <HintPath>..\..\..\..\..\..\workshop\content\294100\1776143665\v1.4\Assemblies\RaiseTheRoof.dll</HintPath>
