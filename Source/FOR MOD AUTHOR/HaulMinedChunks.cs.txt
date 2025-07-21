@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
-using System;
+using System; // Make sure System is imported for Action/Predicate
 
 namespace HaulMinedChunks;
 
@@ -32,37 +32,49 @@ public class HaulMinedChunks
 
     public static void MarkIfNeeded(Thing thing)
     {
+        Log.Message($"[HaulMinedChunks] MarkIfNeeded called for: {thing?.LabelCap} (Def: {thing?.def.defName}) at position {thing?.PositionHeld}");
+
         var map = thing.MapHeld;
         var position = thing.PositionHeld;
 
         if (map == null || position == IntVec3.Invalid || thing.Destroyed)
         {
+            Log.Message($"[HaulMinedChunks] MarkIfNeeded ignored: '{thing?.LabelCap}' is null, destroyed, or not on a valid map position.");
             return;
         }
 
         if (thing.def.thingCategories?.Intersect(ChunkCategoryDefs).Any() == false)
         {
+            Log.Message($"[HaulMinedChunks] MarkIfNeeded ignored: '{thing.LabelCap}' (Def: {thing.def.defName}) is not a chunk category.");
             return;
         }
 
         if (thing.def.filth != null)
         {
+            Log.Message($"[HaulMinedChunks] MarkIfNeeded ignored: '{thing.LabelCap}' is filth.");
             return;
         }
 
-        bool passedAreaChecks = false; 
+        // --- NEW COMBINED AREA FILTERING LOGIC ---
+        bool passedAreaChecks = false; // Assume it fails until proven otherwise
 
+        // Scenario 1: If neither area limit is enabled, it automatically passes.
         if (!HaulMinedChunksMod.Instance.Settings.LimitToHomeArea && !HaulMinedChunksMod.Instance.Settings.LimitToCustomArea)
         {
             passedAreaChecks = true;
+            Log.Message($"[HaulMinedChunks] No area limits enabled, passing area checks.");
         }
-        else 
+        else // At least one area limit is enabled, so we need to check specific conditions.
         {
+            // Scenario 2: If LimitToHomeArea is ON AND the chunk IS within the Home Area.
             if (HaulMinedChunksMod.Instance.Settings.LimitToHomeArea && map.areaManager.Home[position])
             {
                 passedAreaChecks = true;
+                Log.Message($"[HaulMinedChunks] Chunk is in Home Area (LimitToHomeArea enabled), passing area checks.");
             }
 
+            // Scenario 3: If LimitToCustomArea is ON AND it passes the custom area criteria.
+            // This is checked if it hasn't already passed a Home Area check.
             if (!passedAreaChecks && HaulMinedChunksMod.Instance.Settings.LimitToCustomArea)
             {
                 string customAreaNameLower = HaulMinedChunksMod.Instance.Settings.CustomAreaName?.ToLowerInvariant();
@@ -70,33 +82,50 @@ public class HaulMinedChunks
                 if (customAreaNameLower == "unrestricted")
                 {
                     passedAreaChecks = true;
+                    Log.Message($"[HaulMinedChunks] Custom Area set to 'Unrestricted', passing area checks (no location filter applied).");
                 }
-                else 
+                else // It's a true custom-named area, so check its bounds.
                 {
                     var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.Instance.Settings.CustomAreaName);
                     if (customArea != null && customArea[position])
                     {
                         passedAreaChecks = true;
+                        Log.Message($"[HaulMinedChunks] Chunk is in Custom Area '{HaulMinedChunksMod.Instance.Settings.CustomAreaName}', passing area checks.");
                     }
                 }
             }
         }
 
+        // If after all area checks, it did not pass any of the active criteria, then return.
         if (!passedAreaChecks)
         {
+            Log.Message($"[HaulMinedChunks] MarkIfNeeded ignored: '{thing.LabelCap}' failed all active area checks.");
             return;
         }
+        // --- END NEW COMBINED AREA FILTERING LOGIC ---
 
+
+        // *** CRITICAL ADDITION: Explicitly set the thing as NOT forbidden ***
         if (thing.IsForbidden(Faction.OfPlayer))
         {
             thing.SetForbidden(false);
+            Log.Message($"[HaulMinedChunks] Un-forbidding {thing.LabelCap}.");
+        }
+        else
+        {
+             Log.Message($"[HaulMinedChunks] {thing.LabelCap} is not forbidden.");
         }
 
+        // Check if a haul designation already exists after potentially un-forbidding.
+        // This is a safer place for this check.
         if (map.designationManager.DesignationOn(thing, DesignationDefOf.Haul) != null)
         {
+            Log.Message($"[HaulMinedChunks] MarkIfNeeded ignored: Haul designation already exists for '{thing.LabelCap}'.");
             return;
         }
 
+        // Final step: If all checks pass and it's not already designated, add the haul designation.
         map.designationManager.AddDesignation(new Designation(thing, DesignationDefOf.Haul));
+        Log.Message($"[HaulMinedChunks] SUCCESSFULLY DESIGNATED FOR HAUL: {thing.LabelCap} at {position}.");
     }
 }
