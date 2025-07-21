@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.6.1 - Fix for VEF transpiler
+
+
 1.6.0 - Updated to 1.6
 
 

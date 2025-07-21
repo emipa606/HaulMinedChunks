@@ -4,7 +4,6 @@ using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
-using System;
 
 namespace HaulMinedChunks;
 
@@ -25,8 +24,8 @@ public class HaulMinedChunks
             IsArtificialMethodInfo = AccessTools.Method("ArtificialBeings.ABF_Utils:IsArtificial");
         }
 
-        new Harmony("Mlie.HaulMinedChunks").PatchAll();
-        
+        new Harmony("Mlie.HaulMinedChunks").PatchAll(Assembly.GetExecutingAssembly());
+
         ChunkCategoryDefs = ThingCategoryDefOf.Chunks.ThisAndChildCategoryDefs.ToList();
     }
 
@@ -50,41 +49,20 @@ public class HaulMinedChunks
             return;
         }
 
-        bool passedAreaChecks = false; 
 
-        if (!HaulMinedChunksMod.Instance.Settings.LimitToHomeArea && !HaulMinedChunksMod.Instance.Settings.LimitToCustomArea)
-        {
-            passedAreaChecks = true;
-        }
-        else 
-        {
-            if (HaulMinedChunksMod.Instance.Settings.LimitToHomeArea && map.areaManager.Home[position])
-            {
-                passedAreaChecks = true;
-            }
-
-            if (!passedAreaChecks && HaulMinedChunksMod.Instance.Settings.LimitToCustomArea)
-            {
-                string customAreaNameLower = HaulMinedChunksMod.Instance.Settings.CustomAreaName?.ToLowerInvariant();
-                
-                if (customAreaNameLower == "unrestricted")
-                {
-                    passedAreaChecks = true;
-                }
-                else 
-                {
-                    var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.Instance.Settings.CustomAreaName);
-                    if (customArea != null && customArea[position])
-                    {
-                        passedAreaChecks = true;
-                    }
-                }
-            }
-        }
-
-        if (!passedAreaChecks)
+        if (HaulMinedChunksMod.Instance.Settings.LimitToHomeArea && !map.areaManager.Home[position])
         {
             return;
+        }
+
+        if (HaulMinedChunksMod.Instance.Settings.LimitToCustomArea &&
+            HaulMinedChunksMod.Instance.Settings.CustomAreaName?.ToLowerInvariant() != "unrestricted")
+        {
+            var customArea = map.areaManager.GetLabeled(HaulMinedChunksMod.Instance.Settings.CustomAreaName);
+            if (customArea == null || !customArea[position])
+            {
+                return;
+            }
         }
 
         if (thing.IsForbidden(Faction.OfPlayer))

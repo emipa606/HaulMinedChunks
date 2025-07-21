@@ -11,21 +11,31 @@ public static class CompDigPeriodically_CompTickInterval
 {
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        CodeMatcher matcher = new CodeMatcher(instructions)
-            .MatchBack(
-                new CodeMatch(OpCodes.Stfld, AccessTools.Field(typeof(Thing), nameof(Thing.stackCount)))
-            )
-            .MatchBack(
-                new CodeMatch(i => i.IsLdloc())
-            );
+        var matcher = new CodeMatcher(instructions)
+            .MatchStartForward(
+                new CodeMatch(OpCodes.Stfld,
+                    AccessTools.Field(typeof(Thing), nameof(Thing.stackCount)))); // Locate the stackCount assignment
 
-        if (!matcher.Found)
+        if (matcher.Pos < 0) // Check if the match was unsuccessful
         {
-            return instructions;
+            Log.Error(
+                "[HaulMinedChunks]: Could not find stackCount assignment in CompDigPeriodically.CompTickInterval transpiler.");
+            return instructions; // Return original instructions if no match is found
         }
 
-        matcher.DuplicateInstructionAndAdvance();
-        matcher.Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval), nameof(MarkToHaulIfHaulable)));
+        // Ensure the Thing reference is loaded before the stackCount assignment
+        matcher.MatchStartBackwards(new CodeMatch(OpCodes.Ldloc_S)); // Match the local variable load instruction
+        if (matcher.Pos < 0) // Check if the backward match was unsuccessful
+        {
+            Log.Error(
+                "[HaulMinedChunks]: Could not find Thing reference in CompDigPeriodically.CompTickInterval transpiler.");
+            return instructions; // Return original instructions if no match is found
+        }
+
+        // Duplicate the Thing reference and insert the call to MarkToHaulIfHaulable
+        matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Dup)); // Duplicate the Thing reference
+        matcher.InsertAndAdvance(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval),
+            nameof(MarkToHaulIfHaulable)));
 
         return matcher.InstructionEnumeration();
     }
