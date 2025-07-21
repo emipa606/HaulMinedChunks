@@ -1,0 +1,47 @@
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using HarmonyLib;
+using VEF.AnimalBehaviours;
+using Verse;
+
+namespace HaulMinedChunks;
+
+[HarmonyPatch(typeof(CompDigPeriodically), nameof(CompDigPeriodically.CompTickInterval))]
+public static class CompDigPeriodically_CompTickInterval
+{
+    // Transpiler to inject a call to MarkToHaulIfHaulable after a Thing's stackCount is set (meaning it has been created/placed).
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+        CodeMatcher matcher = new CodeMatcher(instructions)
+            // Match backwards from the instruction that sets the stackCount of the Thing.
+            .MatchBack(
+                new CodeMatch(OpCodes.Stfld, AccessTools.Field(typeof(Thing), nameof(Thing.stackCount)))
+            )
+            // Then, match backwards again to find the instruction that loads the local variable holding the Thing instance.
+            .MatchBack(
+                new CodeMatch(i => i.IsLdloc())
+            );
+
+        if (!matcher.Found)
+        {
+            Log.Error("[Haul Mined Chunks] Could not find specific Ldloc for Thing instance in CompTickInterval transpiler. " +
+                      "Vanilla Animals Expanded (Framework) update might have changed method structure significantly. Returning original instructions.");
+            return instructions;
+        }
+
+        // Duplicate the instruction that loads the Thing instance onto the stack.
+        // This ensures the original code still has the Thing instance it needs.
+        matcher.DuplicateInstructionAndAdvance();
+        // Insert a call to our static method, which will receive the Thing instance from the duplicated instruction.
+        matcher.Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval), nameof(MarkToHaulIfHaulable)));
+
+        return matcher.InstructionEnumeration();
+    }
+
+    // This method is called by the transpiler to pass the newly dug up thing to our MarkIfNeeded logic.
+    public static void MarkToHaulIfHaulable(Thing thing)
+    {
+        Log.Message($"[HaulMinedChunks] CompDigPeriodically_CompTickInterval: MarkToHaulIfHaulable called for: {thing?.LabelCap}.");
+        HaulMinedChunks.MarkIfNeeded(thing);
+    }
+}

@@ -11,14 +11,23 @@ public static class CompDigPeriodically_CompTickInterval
 {
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        return new CodeMatcher(instructions)
-            .MatchStartForward(
-                new CodeMatch(OpCodes.Ldloc_S), // Ld `thing`
-                new CodeMatch(OpCodes.Ldloc_S), // Ld `digIfRocksOrBricks`
-                new CodeMatch(OpCodes.Stfld, AccessTools.Field(typeof(Thing), nameof(Thing.stackCount))))
-            .DuplicateInstructionAndAdvance() // Duplicate the Ld `thing`
-            .Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval), nameof(MarkToHaulIfHaulable)))
-            .InstructionEnumeration();
+        CodeMatcher matcher = new CodeMatcher(instructions)
+            .MatchBack(
+                new CodeMatch(OpCodes.Stfld, AccessTools.Field(typeof(Thing), nameof(Thing.stackCount)))
+            )
+            .MatchBack(
+                new CodeMatch(i => i.IsLdloc())
+            );
+
+        if (!matcher.Found)
+        {
+            return instructions;
+        }
+
+        matcher.DuplicateInstructionAndAdvance();
+        matcher.Insert(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval), nameof(MarkToHaulIfHaulable)));
+
+        return matcher.InstructionEnumeration();
     }
 
     public static void MarkToHaulIfHaulable(Thing thing)
