@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.6.2 - Fixed VFE transpiler, lets hope they dont change their code again for a while
+
+
 1.6.1 - Fix for VEF transpiler
 
 
