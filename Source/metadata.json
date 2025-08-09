@@ -5,7 +5,7 @@
   "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "FundingSet": true,
-  "LastXmlCleaning": "2025-08-06T23:04:53.3881927+02:00",
+  "LastXmlCleaning": "2025-08-09T19:25:40.5144002+02:00",
   "SearchTags": [
     "hauling",
     " stone chunks"
@@ -13,7 +13,7 @@
   "Patches": false,
   "Defs": false,
   "Assemblies": true,
-  "LinesOfCode": 26829,
+  "LinesOfCode": 27648,
   "LinesOfXML": 0,
   "CodeBaseSize": 70
 }

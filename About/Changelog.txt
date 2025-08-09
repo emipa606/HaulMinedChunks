@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.6.3 - Fixed VFE transpiler, again, and made it more dynamic. Perhaps they wont change it as much next time
+
+
 1.6.2 - Fixed VFE transpiler, lets hope they dont change their code again for a while
 
 
