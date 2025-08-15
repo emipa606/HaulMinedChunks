@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using ProjectRimFactory;
+using ProjectRimFactory.Common;
 using Verse;
 
 namespace HaulMinedChunks;
