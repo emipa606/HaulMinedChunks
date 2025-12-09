@@ -25,13 +25,13 @@ internal class CompDeepDrill_TryProducePortion
             .MatchStartForward(
                 new CodeMatch(OpCodes.Call, makeThingMethod))
             .ThrowIfInvalid("MakeThing location not found.")
-            .Advance(1)
+            .Advance()
             .Insert(new CodeInstruction(OpCodes.Dup)) //Insert another reference to `thing` to use later.
             .MatchStartForward(
                 new CodeMatch(OpCodes.Call, tryPlaceThingMethod),
                 new CodeMatch(OpCodes.Pop))
             .ThrowIfInvalid("TryPlaceThing location not found.")
-            .Advance(1)
+            .Advance()
             .SetAndAdvance(OpCodes.Call,
                 markToHaulMethod) // Replace the pop with a call to our method, so we pass the bool from TryPlaceThing as a parameter, using the duped `thing` from earlier.
             .InstructionEnumeration();

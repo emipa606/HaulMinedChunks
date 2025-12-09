@@ -5,6 +5,7 @@
   <Configurations>
     <BuildType Name="Release" />
   </Configurations>
+  <Project Path="AlphaBiomesPatch/AlphaBiomesPatch.csproj" />
   <Project Path="AncientMiningIndustryPatch/AncientMiningIndustryPatch.csproj" />
   <Project Path="HaulMinedChunks/HaulMinedChunks.csproj" />
   <Project Path="ProjectRimFactoryRevivedPatch/ProjectRimFactoryRevivedPatch.csproj" />

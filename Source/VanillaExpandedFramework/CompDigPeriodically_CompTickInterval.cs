@@ -34,7 +34,7 @@ public static class CompDigPeriodically_CompTickInterval
         }
 
         // Insert the call to MarkToHaulIfHaulable after the stackCount assignment
-        matcher.Advance(1); // Move to the position after the stfld instruction
+        matcher.Advance(); // Move to the position after the stfld instruction
         matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Dup)); // Duplicate the Thing reference
         matcher.InsertAndAdvance(CodeInstruction.Call(typeof(CompDigPeriodically_CompTickInterval),
             nameof(MarkToHaulIfHaulable)));
