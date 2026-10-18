@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using Verse;
 
 namespace HaulMinedChunks;
@@ -6,18 +7,18 @@ namespace HaulMinedChunks;
 [HarmonyPatch(typeof(GenPlace), "SplitAndSpawnOneStackOnCell")]
 public static class GenPlace_SplitAndSpawnOneStackOnCell
 {
-    public static void Postfix(Thing resultingThing, bool __result)
+    public static void Prefix(ref Action<Thing, int> placedAction)
     {
-        if (!__result)
-        {
-            return;
-        }
-
         if (!Mineable_TrySpawnYield.Spawning)
         {
             return;
         }
 
-        HaulMinedChunks.MarkIfNeeded(resultingThing);
+        var wrappedPlacedAction = placedAction;
+        placedAction = (thing, stackCount) =>
+        {
+            wrappedPlacedAction?.Invoke(thing, stackCount);
+            HaulMinedChunks.MarkIfNeeded(thing);
+        };
     }
 }
