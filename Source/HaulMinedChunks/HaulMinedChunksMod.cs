@@ -15,11 +15,6 @@ internal class HaulMinedChunksMod : Mod
     private static string currentVersion;
 
     /// <summary>
-    ///     The private settings
-    /// </summary>
-    private HaulMinedChunksSettings settings;
-
-    /// <summary>
     ///     Constructor
     /// </summary>
     /// <param name="content"></param>
@@ -37,11 +32,11 @@ internal class HaulMinedChunksMod : Mod
     {
         get
         {
-            settings ??= GetSettings<HaulMinedChunksSettings>();
+            field ??= GetSettings<HaulMinedChunksSettings>();
 
-            return settings;
+            return field;
         }
-        set => settings = value;
+        set;
     }
 
     /// <summary>
@@ -57,11 +52,11 @@ internal class HaulMinedChunksMod : Mod
     ///     The settings-window
     ///     For more info: https://rimworldwiki.com/wiki/Modding_Tutorials/ModSettings
     /// </summary>
-    /// <param name="rect"></param>
-    public override void DoSettingsWindowContents(Rect rect)
+    /// <param name="inRect"></param>
+    public override void DoSettingsWindowContents(Rect inRect)
     {
         var listingStandard = new Listing_Standard();
-        listingStandard.Begin(rect);
+        listingStandard.Begin(inRect);
         if (!Settings.LimitToCustomArea && !Settings.LimitToHomeArea)
         {
             listingStandard.Label("HMC.AllAreas".Translate());

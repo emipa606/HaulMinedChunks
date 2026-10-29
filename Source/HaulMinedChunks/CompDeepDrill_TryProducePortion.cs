@@ -8,9 +8,9 @@ using Verse;
 namespace HaulMinedChunks;
 
 [HarmonyPatch(typeof(CompDeepDrill), "TryProducePortion")]
-internal class CompDeepDrill_TryProducePortion
+internal static class CompDeepDrill_TryProducePortion
 {
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var makeThingMethod = AccessTools.Method(typeof(ThingMaker), nameof(ThingMaker.MakeThing),
             [typeof(ThingDef), typeof(ThingDef)]);

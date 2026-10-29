@@ -11,4 +11,10 @@
   <Project Path="ProjectRimFactoryRevivedPatch/ProjectRimFactoryRevivedPatch.csproj" />
   <Project Path="RaiseTheRoof/RaiseTheRoofPatch.csproj" />
   <Project Path="VanillaExpandedFramework/VanillaExpandedFrameworkPatch.csproj" />
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/ModSettings.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
 </Solution>

@@ -5,7 +5,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [StaticConstructorOnStartup]
-public class AncientMiningIndustryPatch
+public static class AncientMiningIndustryPatch
 {
     static AncientMiningIndustryPatch()
     {

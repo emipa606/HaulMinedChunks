@@ -5,7 +5,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [StaticConstructorOnStartup]
-public class VanillaExpandedFrameworkPatch
+public static class VanillaExpandedFrameworkPatch
 {
     static VanillaExpandedFrameworkPatch()
     {

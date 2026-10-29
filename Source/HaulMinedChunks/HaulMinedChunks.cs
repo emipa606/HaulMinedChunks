@@ -8,7 +8,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [StaticConstructorOnStartup]
-public class HaulMinedChunks
+public static class HaulMinedChunks
 {
     private static readonly List<ThingCategoryDef> ChunkCategoryDefs;
     public static readonly bool Insects2Loaded;

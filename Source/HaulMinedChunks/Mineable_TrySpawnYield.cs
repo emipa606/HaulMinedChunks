@@ -5,7 +5,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [HarmonyPatch(typeof(Mineable), "TrySpawnYield", typeof(Map), typeof(bool), typeof(Pawn))]
-public class Mineable_TrySpawnYield
+public static class Mineable_TrySpawnYield
 {
     public static bool Spawning;
 
@@ -31,7 +31,7 @@ public class Mineable_TrySpawnYield
             }
 
             if (pawn.Faction != Faction.OfPlayerSilentFail ||
-                !(bool)HaulMinedChunks.IsArtificialMethodInfo.Invoke(null, [pawn]))
+                !(bool)(HaulMinedChunks.IsArtificialMethodInfo.Invoke(null, [pawn]) ?? true))
             {
                 return;
             }

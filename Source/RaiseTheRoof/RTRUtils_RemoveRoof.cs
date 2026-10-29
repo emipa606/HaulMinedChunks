@@ -5,7 +5,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [HarmonyPatch(typeof(RTRUtils), nameof(RTRUtils.RemoveRoof))]
-internal class RTRUtils_RemoveRoof
+internal static class RTRUtils_RemoveRoof
 {
     public static void Postfix(IntVec3 cell, Map map)
     {

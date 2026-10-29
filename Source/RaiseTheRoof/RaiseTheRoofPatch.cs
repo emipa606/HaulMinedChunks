@@ -4,7 +4,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [StaticConstructorOnStartup]
-public class RaiseTheRoofPatch
+public static class RaiseTheRoofPatch
 {
     static RaiseTheRoofPatch()
     {

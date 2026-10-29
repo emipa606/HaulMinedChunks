@@ -5,7 +5,7 @@ using Verse;
 namespace HaulMinedChunks;
 
 [StaticConstructorOnStartup]
-public class AlphaBiomesPatch
+public static class AlphaBiomesPatch
 {
     static AlphaBiomesPatch()
     {

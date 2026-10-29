@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <loadFolders>
   <v1.1>
     <li>/</li>
@@ -35,4 +35,13 @@
     <li IfModActive="spdskatr.projectrimfactory">Compatibility/ProjectRimFactoryRevived/1.6</li>
     <li IfModActive="sarg.alphabiomes">Compatibility/AlphaBiomes/1.6</li>
   </v1.6>
+  <v1.7>
+    <li>/</li>
+    <li>1.7</li>
+    <li IfModActive="machine.rtr">Compatibility/RaiseTheRoof/1.7</li>
+    <li IfModActive="oskarpotocki.vanillafactionsexpanded.core">Compatibility/VanillaExpandedFramework/1.7</li>
+    <li IfModActive="XMB.AncientMiningIndustry.MO">Compatibility/AncientMiningIndustry/1.7</li>
+    <li IfModActive="spdskatr.projectrimfactory">Compatibility/ProjectRimFactoryRevived/1.7</li>
+    <li IfModActive="sarg.alphabiomes">Compatibility/AlphaBiomes/1.7</li>
+  </v1.7>
 </loadFolders>

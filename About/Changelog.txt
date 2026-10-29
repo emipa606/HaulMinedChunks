@@ -1,5 +1,8 @@
 # Changelog for HaulMinedChunks
 
+1.7.0 - Mod updated for 1.7 and passed autotests
+
+
 1.6.5 - Added support for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1841354677]Alpha Biomes[/url]
 
 
